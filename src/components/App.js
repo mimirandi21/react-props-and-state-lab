@@ -16,11 +16,10 @@ class App extends React.Component {
   }
 
   onAdoptPet = (id) => {
-    let pet = this.state.pets.find((id: id));
-    this.setState({
-      ...this.state.pets.pet,
-      isAdopted: true,
+    let pets = this.state.pets.map((pet) => {
+      return pet.id === id ? { ...pet, isAdopted: true } : pet;
     });
+    this.setState({ pets: pets });
   };
 
   onChangeType = (e) => {
